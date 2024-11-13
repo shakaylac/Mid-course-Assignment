@@ -235,15 +235,12 @@ You must create your own components using basic HTML, JSX, and Bootstrap
 #### Bootstrap Version 5 styling
 1. We want you to build this application using the Bootstrap CSS styling library.
    We have already imported the relevant links into the index.html file.
-	 
- All you need to do is read the provided documentation and learn which
- classes you need to use in your app to get styling results matching the Demo
- video.
-
- Reading through documentation and learning how to use new technologies
- is an ESSENTIAL skill in this job. That's why we're introducing it here.
-
-2. Here are the relevant documentation links you need for all components 
+2. All you need to do is read the provided documentation and learn which
+   classes you need to use in your app to get styling results matching the Demo
+   video.
+3. Reading through documentation and learning how to use new technologies
+   is an ESSENTIAL skill in this job. That's why we're introducing it here.
+4. Here are the relevant documentation links you need for all components 
    in this app. We have provided a link to the "Getting Started" page
    and targeted links to the specific styling examples you'll need
    to match the styling of the Demo App:
