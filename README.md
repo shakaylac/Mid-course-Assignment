@@ -33,7 +33,7 @@ But, the video must meet the requirements we describe below.
 ## How These Instructions Are Organized
 
 We will start by providing you with information on how to get the `api` program
-and your `assignmnet-app` starter code installed and running.
+and your `assignment-app` starter code installed and running.
 This section will be called `Getting Started`.
 
 Then, we will provide the feature requirements you need to implement in your 
@@ -289,9 +289,9 @@ Here are some screenshots of the Demo app
 ![Search Return Example](/readMeFiles/search-return-example.png)
 
 
-Videos to provide in this repo
+Videos provided in this repo:
 - Demo walkthrough video - `demo-app-walkthrough.mp4`
-- How to run the app with two VS code terminals - `running-the-app.mp4`
+- How to run the `api` and `assignment-app` applications with two VS code terminals - `running-the-app.mp4`
 
 VIDEO DISCLAIMER - You will need to clone the repo to your local device before
 you can watch the .mp4 files since GitHub does not support watching it from here.
