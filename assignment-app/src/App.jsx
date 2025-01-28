@@ -1,19 +1,18 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import Nav from "./Nav";
 import Home from "./Home";
+import { BrowserRouter } from "react-router-dom";
 //import Search from "./Search";
 
 function App() {
   return (
-    <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-        {/* <p> tag is a placeholder, You'll need to change the tag/component type later*/}
-          <Link to="/" className="navbar-brand ms-4 nav-link">User Behavior Data</Link>
-          <Link to="/search" className="navbar-brand ms-4 nave-link">Search Through Dataset</Link>
-      </nav>
-      <hr />
-      <Home />
-    </div>
+    <BrowserRouter>
+      <div>
+        <Nav />
+        <hr />
+        <Home />
+      </div>
+    </BrowserRouter>
   );
 }
 
