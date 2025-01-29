@@ -17,6 +17,8 @@ function Search() {
                 <li><a class="dropdown-item" href="#">Operating System</a></li>
                 <li><a class="dropdown-item" href="#">Behavior Class</a></li>
             </ul>
+
+            <input type="text" placeholder="Search by Keyword"></input>
             </div>
         </div>        
         </>
