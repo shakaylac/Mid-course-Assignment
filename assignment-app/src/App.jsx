@@ -7,7 +7,6 @@ function App() {
   return (
     <BrowserRouter>
       <div>
-        
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/search" element={<Search />} />

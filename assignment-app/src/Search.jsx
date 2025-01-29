@@ -6,8 +6,19 @@ function Search() {
         <>
             <Nav />
             <hr />
-            <h1>This is the Search page</h1>
-        
+
+        <div className="container">
+          <label>Select data point to filter search by</label>
+          <div class="input-group">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Model</a></li>
+                <li><a class="dropdown-item" href="#">Gender</a></li>
+                <li><a class="dropdown-item" href="#">Operating System</a></li>
+                <li><a class="dropdown-item" href="#">Behavior Class</a></li>
+            </ul>
+            </div>
+        </div>        
         </>
     );
 };
