@@ -1,16 +1,17 @@
 import React from "react";
-import Nav from "./Nav";
 import Home from "./Home";
-import { BrowserRouter } from "react-router-dom";
-//import Search from "./Search";
+import { BrowserRouter, Route, Routes,NavLink } from "react-router-dom";
+import Search from "./Search";
 
 function App() {
   return (
     <BrowserRouter>
       <div>
-        <Nav />
-        <hr />
-        <Home />
+        
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/search" element={<Search />} />
+        </Routes>
       </div>
     </BrowserRouter>
   );
