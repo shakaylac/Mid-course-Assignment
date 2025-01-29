@@ -19,6 +19,11 @@ function Search() {
             </ul>
 
             <input type="text" placeholder="Search by Keyword"></input>
+            <button>Search</button>
+             <p> No Records To Display </p>
+            <div className="container">
+                
+            </div>
             </div>
         </div>        
         </>
