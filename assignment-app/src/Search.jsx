@@ -22,7 +22,12 @@ function Search() {
             <button>Search</button>
              <p> No Records To Display </p>
             <div className="container">
-                
+                <div className="row">
+                  <div className="col"></div>
+                  <div className="col"></div>
+                  <div className="col"></div>
+                  <div className="col"></div>
+                </div>
             </div>
             </div>
         </div>        
