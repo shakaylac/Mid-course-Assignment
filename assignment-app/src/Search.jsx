@@ -23,10 +23,10 @@ function Search() {
              <p> No Records To Display </p>
             <div className="container">
                 <div className="row">
-                  <div className="col">App Usage Time (min/day) </div>
-                  <div className="col">Screen on time (hours/day)</div>
-                  <div className="col">Number of Apps Installed</div>
-                  <div className="col">Age</div>
+                  <div className="col text-center">App Usage Time (min/day) </div>
+                  <div className="col text-center">Screen on time (hours/day)</div>
+                  <div className="col text-center">Number of Apps Installed</div>
+                  <div className="col text-center">Age</div>
                 </div>
                 <table>
                     <thead className="fw-bold">User ID Device Model Operating System App Usage Time (min/day) Screen On Time (hours/day) Battery Drain (mAh/day) Number of Apps Installed Data Usage (MB/day) Age Gender User Behavior Class</thead>
