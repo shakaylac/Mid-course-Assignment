@@ -8,6 +8,7 @@ function Search() {
             <hr />
 
         <div className="container">
+            <div className="d-flex flex-column">
           <label>Select data point to filter search by</label>
           <div class="input-group">
             <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
@@ -17,6 +18,7 @@ function Search() {
                 <li><a class="dropdown-item" href="#">Operating System</a></li>
                 <li><a class="dropdown-item" href="#">Behavior Class</a></li>
             </ul>
+            </div>
 
             <input type="text" placeholder="Search by Keyword"></input>
             <button>Search</button>
