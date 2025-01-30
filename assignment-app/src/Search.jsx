@@ -28,6 +28,9 @@ function Search() {
                   <div className="col">Number of Apps Installed</div>
                   <div className="col">Age</div>
                 </div>
+                <table>
+                    <thead className="fw-bold">User ID Device Model Operating System App Usage Time (min/day) Screen On Time (hours/day) Battery Drain (mAh/day) Number of Apps Installed Data Usage (MB/day) Age Gender User Behavior Class</thead>
+                 </table>
             </div>
             </div>
         </div>        
