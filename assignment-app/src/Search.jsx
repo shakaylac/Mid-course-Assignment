@@ -16,10 +16,10 @@ function Search() {
              <p> No Records To Display </p>
             <div className="container">
                 <div className="row">
-                  <div className="col">App Usage Time (min/day) </div>
-                  <div className="col">Screen on time (hours/day)</div>
-                  <div className="col">Number of Apps Installed</div>
-                  <div className="col">Age</div>
+                  <div className="col border">App Usage Time (min/day) </div>
+                  <div className="col border">Screen on time (hours/day)</div>
+                  <div className="col border">Number of Apps Installed</div>
+                  <div className="col border">Age</div>
                 </div>
             </div>
             </div>
