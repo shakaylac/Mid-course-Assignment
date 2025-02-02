@@ -1,6 +1,7 @@
 import React from "react";
 import Nav from "./Nav";
 import DropdownButton from "./DropdownButton";
+import Table from "./Table";
 
 function Search() {
     return(
@@ -22,6 +23,8 @@ function Search() {
                   <div className="col border">Age</div>
                 </div>
             </div>
+
+            <Table />
             </div>
      
         </>
