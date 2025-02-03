@@ -1,28 +1,41 @@
 
-
-function Table() {
+function Table({ data }) {
     return(
-        <table>
-            <thead>
-            <tr className="fw-bold border">
-                <th scope="col" className="p-1">User ID</th>
-                <th scope="col" className="p-1">Device Model</th>
-                <th scope="col" className="p-1">Operating System</th>
-                <th scope="col" className="p-1">App Usage Time (min/day)</th>
-                <th scope="col" className="p-1">Screen On Time (hours/day)</th>
-                <th scope="col" className="p-1">Battery Drain (mAh/day)</th>
-                <th scope="col" className="p-1">Number of Apps Installed</th>
-                <th scope="col" className="p-1">Data Usage (MB/day)</th>
-                <th scope="col" className="p-1">Age</th>
-                <th scope="col" className="p-1">Gender</th>
-                <th scope="col" className="p-1">User Behavior Class</th>
+        <table className="table">
+        <thead>
+            <tr className="fw-bold">
+                <th>User ID</th>
+                <th>Device Model</th>
+                <th>Operating System</th>
+                <th>App Usage Time (min/day)</th>
+                <th>Screen On Time (hours/day)</th>
+                <th>Battery Drain (mAh/day)</th>
+                <th>Number of Apps Installed</th>
+                <th>Data Usage (MB/day)</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>User Behavior Class</th>
             </tr>
-            </thead>
-            <tbody>
-
-            </tbody>
-        </table>
-    );
+        </thead>
+        <tbody>
+            {data.map((user, index) => (
+                <tr key={index}>
+                    <td>{user["User ID"]}</td>
+                    <td>{user["Device Model"]}</td>
+                    <td>{user["Operating System"]}</td>
+                    <td>{user["App Usage Time (min/day)"]}</td>
+                    <td>{user["Screen On Time (hours/day)"]}</td>
+                    <td>{user["Battery Drain (mAh/day)"]}</td>
+                    <td>{user["Number of Apps Installed"]}</td>
+                    <td>{user["Data Usage (MB/day)"]}</td>
+                    <td>{user["Age"]}</td>
+                    <td>{user["Gender"]}</td>
+                    <td>{user["User Behavior Class"]}</td>
+                </tr>
+            ))}
+        </tbody>
+    </table>
+    )
 };
 
 export default Table;
