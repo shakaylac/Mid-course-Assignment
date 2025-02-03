@@ -9133,7 +9133,6 @@ function Search() {
         setFilteredData(filtered);
     }
 
-    
 
     return (
         <>
@@ -9152,9 +9151,9 @@ function Search() {
                     <button className="rounded border-0" onClick={handleSearch}>Search</button>
                 </div>
                     <p>Displaying {filteredData.length} Records</p>
-
+                    <AverageandMedian filteredData={filteredData} />
                 <div className="container mt-4">
-                    <AverageandMedian />
+                
 
 
                     {filteredData.length > 0 ? (

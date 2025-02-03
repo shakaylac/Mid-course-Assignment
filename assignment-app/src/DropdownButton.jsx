@@ -15,7 +15,7 @@ function DropdownButton({ onFilterChange}) {
     return(
         <div className="d-flex flex-column">
         <p>Select data point to filter search by</p>
-        <div class="input-group">
+        <div className="input-group">
           <button className="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
             <ul className="dropdown-menu" value={selectedOption} onChange={handleChange}>
                 <li className="dropdown-item" value="model">Model</li>
