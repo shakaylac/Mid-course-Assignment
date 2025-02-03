@@ -9150,8 +9150,10 @@ function Search() {
                     />
                     <button className="rounded border-0" onClick={handleSearch}>Search</button>
                 </div>
+                    <p>Displaying {filteredData.length} Records</p>
 
                 <div className="container mt-4">
+
                     {filteredData.length > 0 ? (
                         <Table data={filteredData} />
                     ) : (
