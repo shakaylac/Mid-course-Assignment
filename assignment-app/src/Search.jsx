@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Nav from "./Nav";
 import Table from "./Table";
 import DropdownButton from "./DropdownButton"
+import AverageandMedian from "./AverageandMedian";
 
 
 function Search() {
@@ -9153,6 +9154,8 @@ function Search() {
                     <p>Displaying {filteredData.length} Records</p>
 
                 <div className="container mt-4">
+                    <AverageandMedian />
+
 
                     {filteredData.length > 0 ? (
                         <Table data={filteredData} />
