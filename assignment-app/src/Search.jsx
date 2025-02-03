@@ -9109,7 +9109,7 @@ function Search() {
           }
         
         
-    ];
+    ];  
 
     const [filterKey, setFilterKey] = useState('');
     const [searchTerm, setSearchTerm] = useState('');
@@ -9125,13 +9125,33 @@ function Search() {
 
     const handleSearch = () => {
         let filtered = userData;
-
+    
         if (filterKey && searchTerm) {
-            filtered = filtered.filter(user => user[filterKey] && user[filterKey].toString().toLowerCase().includes(searchTerm.toLowerCase()));
+            const isNumericField = [
+                "App Usage Time (min/day)",
+                "Screen On Time (hours/day)",
+                "Battery Drain (mAh/day)",
+                "Number of Apps Installed",
+                "Data Usage (MB/day)",
+                "Age",
+                "User Behavior Class"
+            ].includes(filterKey);
+    
+            if (isNumericField) {
+                const numericSearchTerm = parseFloat(searchTerm); 
+                filtered = filtered.filter(user => {
+                    const fieldValue = parseFloat(user[filterKey]); 
+                    return !isNaN(fieldValue) && fieldValue.toString().includes(numericSearchTerm.toString());
+                });
+            } else {
+                filtered = filtered.filter(user => 
+                    user[filterKey] && user[filterKey].toString().toLowerCase().includes(searchTerm.toLowerCase())
+                );
+            }
         }
-
+    
         setFilteredData(filtered);
-    }
+    };
 
 
     return (
