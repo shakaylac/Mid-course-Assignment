@@ -9124,7 +9124,13 @@ function Search() {
     }
 
     const handleSearch = () => {
-        let filtered = userData;
+        let filtered = userData.filter(user => {
+            return Object.values(user).some(value =>
+                value && value.toString().toLowerCase().includes(searchTerm.toLowerCase())
+            );
+        });
+
+        setFilteredData(filtered);
     
         if (filterKey && searchTerm) {
             const isNumericField = [
