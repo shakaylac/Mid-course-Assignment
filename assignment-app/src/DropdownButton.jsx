@@ -3,7 +3,7 @@ import { useState } from "react";
 function DropdownButton({ onFilterChange}) {
 
 
-    const [selectedOption, setSelectedOption] = useState('');
+    const [selectedOption, setSelectedOption] = useState("Model");
  
     const handleChange = (e) => {
        const value = e.target.getAttribute("data-value");
