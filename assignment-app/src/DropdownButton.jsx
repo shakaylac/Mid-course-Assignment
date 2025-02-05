@@ -3,12 +3,14 @@ import { useState } from "react";
 function DropdownButton({ onFilterChange}) {
 
 
-    const [selectedOption, setModelOption] = useState('');
+    const [selectedOption, setSelectedOption] = useState('Model');
  
     const handleChange = (e) => {
        const value =e.target.getAttribute("value");
        setSelectedOption(value);
        onFilterChange(value);
+
+
     }
 
 
