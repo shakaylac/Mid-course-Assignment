@@ -9140,7 +9140,6 @@ function Search() {
                 "Number of Apps Installed",
                 "Data Usage (MB/day)",
                 "Age",
-                "User Behavior Class"
             ].includes(filterKey);
     
             if (isNumericField) {

@@ -16,8 +16,7 @@ const calculateMedian = (data, field) => {
     const validData = data.filter(user => !isNaN(user[field]) && user[field] !== null);
 
     if(validData.length === 0) return 0;
-
-    const sortedData = data.map(user => user[field]).sort((a, b) => a - b);
+    const sortedData = validData.map(user => parseFloat(user[field])).sort((a, b) => a - b);
     const middle = Math.floor(sortedData.length / 2);
     if (sortedData.length % 2 === 0) {
         return ((sortedData[middle - 1] + sortedData[middle]) / 2).toFixed(1);
