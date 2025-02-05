@@ -6,10 +6,10 @@ const calculateAverage = (data, field) => {
     const validData = data.filter(user => !isNaN(user[field]) && user[field] !== null !== undefined && user[field] !== "");
 
     if(validData.length === 0) return 0;
-    const sum = validData.reduce((acc, user) => acc + user[field], 0);
+    const sum = validData.reduce((acc, user) => acc + parseFloat(user[field] || 0), 0);
     const avg = sum / validData.length;
 
-    return (sum / validData.length); 
+    return (sum / validData.length).toFixed(0); 
 
    // return avg.toFixed(1);
 };
