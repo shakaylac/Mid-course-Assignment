@@ -9114,6 +9114,7 @@ function Search() {
     const [filterKey, setFilterKey] = useState('');
     const [searchTerm, setSearchTerm] = useState('');
     const [filteredData, setFilteredData] = useState(userData);
+    const [isVisible, setIsVisible] = useState(false);
 
     const handleSearchChange = (e) => {
         setSearchTerm(e.target.value);
@@ -9164,7 +9165,7 @@ function Search() {
             <Nav />
             <hr />
             <div className="container">
-                <DropdownButton onFilterChange={handleFilterChange} />
+                <DropdownButton onFilterChange={handleFilterChange} onClick={() => setIsVisible(true)} />
                 <div className="d-flex flex-column w-25">
                     <input
                         type="text"
@@ -9173,10 +9174,11 @@ function Search() {
                         value={searchTerm}
                         onChange={handleSearchChange}
                     />
-                    <button className="rounded border-0" onClick={handleSearch}>Search</button>
+                    <button type="button" className="btn btn-outline-secondary rounded" onClick={handleSearch}>Search</button>
+
                 </div>
                     <p>Displaying {filteredData.length} Records</p>
-                    <AverageandMedian filteredData={filteredData} />
+                     <AverageandMedian filteredData={filteredData} />
                 <div className="container mt-4">
                 
 

@@ -3,11 +3,15 @@ import React from "react";
 const calculateAverage = (data, field) => {
     if(!data || data.length === 0) return 0;
 
-    const validData = data.filter(user => !isNaN(user[field]) && user[field] !== null);
+    const validData = data.filter(user => !isNaN(user[field]) && user[field] !== null !== undefined && user[field] !== "");
 
     if(validData.length === 0) return 0;
     const sum = validData.reduce((acc, user) => acc + user[field], 0);
-    return (sum / validData.length).toFixed(1); 
+    const avg = sum / validData.length;
+
+    return (sum / validData.length); 
+
+   // return avg.toFixed(1);
 };
 
 const calculateMedian = (data, field) => {
