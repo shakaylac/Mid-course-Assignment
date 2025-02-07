@@ -9114,7 +9114,7 @@ function Search() {
     const [filterKey, setFilterKey] = useState('');
     const [searchTerm, setSearchTerm] = useState('');
     const [filteredData, setFilteredData] = useState(userData);
-    const [isVisible, setIsVisible] = useState(false);
+    const [hasSearched, setHasSearch] = useState(false);
 
     const handleSearchChange = (e) => {
         setSearchTerm(e.target.value);
@@ -9129,6 +9129,7 @@ function Search() {
             return Object.values(user).some(value =>
                 value && value.toString().toLowerCase().includes(searchTerm.toLowerCase())
             );
+            
         });
 
         setFilteredData(filtered);
@@ -9153,10 +9154,14 @@ function Search() {
                 filtered = filtered.filter(user => 
                     user[filterKey] && user[filterKey].toString().toLowerCase().includes(searchTerm.toLowerCase())
                 );
-            }
-        }
+            };
+        };
     
         setFilteredData(filtered);
+
+        setHasSearch(true);
+
+      
     };
 
 
@@ -9165,7 +9170,7 @@ function Search() {
             <Nav />
             <hr />
             <div className="container">
-                <DropdownButton onFilterChange={handleFilterChange} onClick={() => setIsVisible(true)} />
+                <DropdownButton onFilterChange={handleFilterChange} />
                 <div className="d-flex flex-column w-25">
                     <input
                         type="text"
@@ -9178,16 +9183,32 @@ function Search() {
 
                 </div>
                     <p>Displaying {filteredData.length} Records</p>
-                     <AverageandMedian filteredData={filteredData} />
+                 <AverageandMedian filteredData={filteredData} />
                 <div className="container mt-4">
-                
+                    <table>
+                    <thead>
+                <tr className="fw-bold border">
+                    <th>User ID</th>
+                    <th>Device Model</th>
+                    <th>Operating System</th>
+                    <th>App Usage Time (min/day)</th>
+                    <th>Screen On Time (hours/day)</th>
+                    <th>Battery Drain (mAh/day)</th>
+                    <th>Number of Apps Installed</th>
+                    <th>Data Usage (MB/day)</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>User Behavior Class</th>
+                </tr>
+            </thead>
 
+                {hasSearched && filteredData.length > 0 ? (
 
-                    {filteredData.length > 0 ? (
                         <Table data={filteredData} />
-                    ) : (
+                    ) : hasSearched ? (
                         <p>No Records To Display</p>
-                    )}
+                    ) : null}
+                    </table>
                 </div>
             </div>
         </>
