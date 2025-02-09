@@ -3,9 +3,7 @@ const app = express();
 const port = 3000;
 const apiRoutes = require("./routes");
 const qs = require("qs");
-const express = require('iexpress');
 const cors = require('cors');
-const spp = express();
 
 // Root route
 app.get('api/data/search', (req, res) => {
@@ -13,7 +11,7 @@ app.get('api/data/search', (req, res) => {
 });
 
 app.use(cors({
-  origin: 'http://localhost:5175',
+  origin: 'http://localhost:5174',
 }));
 
 app.get("/", (req, res, next) => {
