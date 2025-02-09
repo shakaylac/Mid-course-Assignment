@@ -11,7 +11,6 @@ const calculateAverage = (data, field) => {
 
     return (sum / validData.length).toFixed(0); 
 
-   // return avg.toFixed(1);
 };
 
 const calculateMedian = (data, field) => {
@@ -30,35 +29,62 @@ const calculateMedian = (data, field) => {
 
 function AverageandMedian({ filteredData }) {    
     if (!Array.isArray(filteredData) || filteredData.length === 0) {
-        return <p>No data to calculate average or median</p>;
-    }
-
-    return (
-        <div className="d-flex flex-row text-center gap-3">
+        return (
+            <div className="d-flex flex-row text-center gap-3">
             <div className="border w-25">
                 <p><strong>Average Usage Time (min/day)</strong></p>
-                <p>Average: {calculateAverage(filteredData, "App Usage Time (min/day)")} minutes</p>
-                <p>Median: {calculateMedian(filteredData, "App Usage Time (min/day)")} minutes</p>
+                <p>Average: 0 minutes</p>
+                <p>Median: 0 minutes</p>
             </div>
 
             <div className="border w-25">
                 <p><strong>Screen On Time (hours/day)</strong></p>
-                <p>Average: {calculateAverage(filteredData, "Screen On Time (hours/day)")} hours</p>
-                <p>Median: {calculateMedian(filteredData, "Screen On Time (hours/day)")} hours</p>
+                <p>Average: 0 hours</p>
+                <p>Median: 0 hours</p>
             </div>
 
             <div className="border w-25">
                 <p><strong>Number of Apps Installed</strong></p>
-                <p>Average: {calculateAverage(filteredData, "Number of Apps Installed")} Apps</p>
-                <p>Median: {calculateMedian(filteredData, "Number of Apps Installed")} Apps</p>
+                <p>Average: 0 Apps</p>
+                <p>Median: 0 Apps</p>
             </div>
 
             <div className="border w-25">
                 <p><strong>Age</strong></p>
-                <p>Average: {calculateAverage(filteredData, "Age")} Years Old</p>
-                <p>Median: {calculateMedian(filteredData, "Age")} Years Old</p>
+                <p>Average: 0 Years Old</p>
+                <p>Median: 0 Years Old</p>
             </div>
         </div>
+        );
+    }
+
+    return (
+        
+            <div className="d-flex flex-row text-center gap-3">
+                <div className="border w-25">
+                    <p><strong>Average Usage Time (min/day)</strong></p>
+                    <p>Average: {calculateAverage(filteredData, "App Usage Time (min/day)")} minutes</p>
+                    <p>Median: {calculateMedian(filteredData, "App Usage Time (min/day)")} minutes</p>
+                </div>
+
+                <div className="border w-25">
+                    <p><strong>Screen On Time (hours/day)</strong></p>
+                    <p>Average: {calculateAverage(filteredData, "Screen On Time (hours/day)")} hours</p>
+                    <p>Median: {calculateMedian(filteredData, "Screen On Time (hours/day)")} hours</p>
+                </div>
+
+                <div className="border w-25">
+                    <p><strong>Number of Apps Installed</strong></p>
+                    <p>Average: {calculateAverage(filteredData, "Number of Apps Installed")} Apps</p>
+                    <p>Median: {calculateMedian(filteredData, "Number of Apps Installed")} Apps</p>
+                </div>
+
+                <div className="border w-25">
+                    <p><strong>Age</strong></p>
+                    <p>Average: {calculateAverage(filteredData, "Age")} Years Old</p>
+                    <p>Median: {calculateMedian(filteredData, "Age")} Years Old</p>
+                </div>
+            </div>
     );
 }
 

@@ -4,11 +4,11 @@ function Home(){
         <>
         <Nav />
         <hr />
-        <div className="container">
-            <h1>User Behavior Dataset</h1>
+        <div className="container w-75 fs-6 text">
+            <h3>User Behavior Dataset</h3>
                 <p>This dataset provides a comprehensive analysis of mobile device usage patterns and user behavior classification. It contains 700 samples of user data, including metrics such as app usage time, screen-on time, battery drain, and data consumption. Each entry is categorized into one of five user behavior classes, ranging from light to extreme usage, allowing for insightful analysis and modeling.
                  </p>
-            <h1>Key Features:</h1>
+            <h3>Key Features:</h3>
                 <ul className="list-unstyled">
                     <li> - User ID: Unique identifier for each user. </li>
                     <li> - Device Model: Model of the user's smartphone. </li>
@@ -27,6 +27,7 @@ function Home(){
                 </a>
         </div>
         </>
+        
     );
 };
 export default Home;
