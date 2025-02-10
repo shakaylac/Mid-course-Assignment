@@ -11,6 +11,7 @@ function Search() {
     const [filterKey, setFilterKey] = useState('');
     const [searchTerm, setSearchTerm] = useState('');
     const [filteredData, setFilteredData] = useState([]);
+    const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
       const fetchData = async () => {
@@ -39,6 +40,7 @@ function Search() {
 
     const handleFilterChange = (filter) => {
         setFilterKey(filter);
+        setIsVisible(true);
     }
 
     const handleSearch = () => {
@@ -75,6 +77,8 @@ function Search() {
         };
     
         setFilteredData(filtered);
+        setIsVisible(true);
+
       
     };
 
@@ -97,9 +101,9 @@ function Search() {
 
                 </div>
                     <p>Displaying {filteredData.length} Records</p>
-                 <AverageandMedian filteredData={filteredData} />
+                 <AverageandMedian filteredData={filteredData} isVisible={isVisible} />
                 <div className="container mt-4">
-                   <Table data={filteredData} />
+                   <Table data={filteredData} isVisible={isVisible}/>
                 </div>
             </div>
         </>
