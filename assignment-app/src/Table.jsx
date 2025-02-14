@@ -40,9 +40,7 @@ function Table({ data, isVisible }) {
             ))
           ) : (
             <tr>
-              <td colSpan="11" className="text-center">
-                No records available
-              </td>
+      
             </tr>
           )
         )}

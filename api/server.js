@@ -11,7 +11,7 @@ app.get('api/data/search', (req, res) => {
 });
 
 app.use(cors({
-  origin: 'http://localhost:5174',
+  origin: 'http://localhost:5173',
 }));
 
 app.get("/", (req, res, next) => {

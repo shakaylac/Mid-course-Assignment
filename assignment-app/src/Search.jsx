@@ -100,8 +100,8 @@ function Search() {
                     <button type="button" className="btn btn-outline-secondary rounded" onClick={handleSearch}>Search</button>
 
                 </div>
-                    <p>Displaying {filteredData.length} Records</p>
-                 <AverageandMedian filteredData={filteredData} isVisible={isVisible} />
+                    <p>Displaying {filteredData.length > 0 ? filteredData.length : 0} Records</p>
+                 {filteredData.length > 0 && <AverageandMedian filteredData={filteredData} />}
                 <div className="container mt-4">
                    <Table data={filteredData} isVisible={isVisible}/>
                 </div>
