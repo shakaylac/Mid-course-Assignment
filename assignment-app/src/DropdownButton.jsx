@@ -1,34 +1,18 @@
 import { useState } from "react";
 
-function DropdownButton({ onFilterChange}) {
+function DropdownButton({ onFilterChange }) {
+  const handleChange = (e) => {
+    onFilterChange(e.target.value); // Pass the selected filter to the parent (Search.jsx)
+  };
 
-
-    const [selectedOption, setSelectedOption] = useState("Model");
- 
-    const handleChange = (e) => {
-       const value = e.target.getAttribute("data-value");
-       setSelectedOption(e.target.innerText);
-       onFilterChange(value);
-
-    }
-
-
-    return(
-        <div className="d-flex flex-column">
-        <p>Select data point to filter search by</p>
-        <div className="input-group">
-          <button className="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">{selectedOption}</button>
-            <ul className="dropdown-menu">
-                <li className="dropdown-item" data-value="model" onClick={handleChange}>Model</li>
-                <li className="dropdown-item" data-value="gender" onClick={handleChange}>Gender</li>
-                <li className="dropdown-item" data-value="operating-system" onClick={handleChange}>Operating System</li>
-                <li className="dropdown-item" data-value="behavior-class" onClick={handleChange}>Behavior Class</li>
-            </ul>
-          </div>
-        </div>
-
-        
-    )
+  return (
+    <select onChange={handleChange}>
+      <option value="Device Model">Model</option>
+      <option value="Gender">Gender</option>
+      <option value="Operating System">Operating System</option>
+      <option value="User Behavior Class">Behavior Class</option>
+    </select>
+  );
 }
 
 export default DropdownButton;

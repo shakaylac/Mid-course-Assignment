@@ -27,8 +27,8 @@ const calculateMedian = (data, field) => {
     return sortedData[middle].toFixed(1);
 };
 
-function AverageandMedian({ filteredData, isVisible }) {    
-    if (!Array.isArray(filteredData) || filteredData.length === 0 || isVisible) {
+function AverageandMedian({ filteredData }) {    
+    if (!Array.isArray(filteredData) || filteredData.length === 0 ) {
         return (
             <div className="d-flex flex-row text-center gap-3">
             <div className="border w-25">
