@@ -12,6 +12,7 @@ function Search() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    // Fetch the data from the API when the component mounts
     const fetchData = async () => {
       try {
         const response = await fetch("http://localhost:3000/api/data/search");
@@ -22,7 +23,20 @@ function Search() {
 
         const data = await response.json();
         setUserData(data);
-        setFilteredData(data); // Show all data initially
+        
+        // Check if there's saved data in sessionStorage and apply it
+        const savedSearchTerm = sessionStorage.getItem('searchTerm');
+        const savedFilterKey = sessionStorage.getItem('filterKey');
+        const savedFilteredData = sessionStorage.getItem('filteredData');
+
+        if (savedSearchTerm && savedFilterKey && savedFilteredData) {
+          setSearchTerm(savedSearchTerm);
+          setFilterKey(savedFilterKey);
+          setFilteredData(JSON.parse(savedFilteredData)); // Parse JSON data
+          setIsVisible(true); // Make sure table is visible
+        } else {
+          setFilteredData(data); // Show all data initially
+        }
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -41,33 +55,33 @@ function Search() {
 
   const handleSearch = () => {
     let filtered = userData;
-  
+
     // Filter by category if selected
     if (filterKey && searchTerm) {
       if (filterKey === "Gender") {
-        // For Gender field, perform an exact match (case-insensitive)
         filtered = userData.filter(user =>
           user[filterKey] && user[filterKey].toString().toLowerCase() === searchTerm.toLowerCase()
         );
       } else {
-        // For other fields, allow partial matches (substring match)
         filtered = userData.filter(user =>
           user[filterKey] && user[filterKey].toString().toLowerCase().includes(searchTerm.toLowerCase())
         );
       }
     } else if (searchTerm) {
-      // If no filter is selected, filter by the general search term across all fields
       filtered = userData.filter(user =>
         Object.values(user).some(value =>
           value && value.toString().toLowerCase().includes(searchTerm.toLowerCase())
         )
       );
     }
-  
+
+    // Set the filtered data and save to sessionStorage
     setFilteredData(filtered);
     setIsVisible(true);
+    sessionStorage.setItem('searchTerm', searchTerm);
+    sessionStorage.setItem('filterKey', filterKey);
+    sessionStorage.setItem('filteredData', JSON.stringify(filtered)); // Save as JSON string
   };
-  
 
   return (
     <>
@@ -96,6 +110,3 @@ function Search() {
 }
 
 export default Search;
-
- 
-

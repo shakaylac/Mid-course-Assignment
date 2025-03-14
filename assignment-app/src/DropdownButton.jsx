@@ -1,8 +1,7 @@
-import { useState } from "react";
 
 function DropdownButton({ onFilterChange }) {
   const handleChange = (e) => {
-    onFilterChange(e.target.value); // Pass the selected filter to the parent (Search.jsx)
+    onFilterChange(e.target.value);
   };
 
   return (
