@@ -6,13 +6,14 @@ import AverageandMedian from "./AverageandMedian";
 
 function Search() {
   const [userData, setUserData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [filterKey, setFilterKey] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredData, setFilteredData] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
+  const [isSearchClicked, setIsSearchClicked] = useState(false);  // New state for tracking search button click
 
   useEffect(() => {
-    // Fetch the data from the API when the component mounts
     const fetchData = async () => {
       try {
         const response = await fetch("http://localhost:3000/api/data/search");
@@ -23,22 +24,10 @@ function Search() {
 
         const data = await response.json();
         setUserData(data);
-        
-        // Check if there's saved data in sessionStorage and apply it
-        const savedSearchTerm = sessionStorage.getItem('searchTerm');
-        const savedFilterKey = sessionStorage.getItem('filterKey');
-        const savedFilteredData = sessionStorage.getItem('filteredData');
-
-        if (savedSearchTerm && savedFilterKey && savedFilteredData) {
-          setSearchTerm(savedSearchTerm);
-          setFilterKey(savedFilterKey);
-          setFilteredData(JSON.parse(savedFilteredData)); // Parse JSON data
-          setIsVisible(true); // Make sure table is visible
-        } else {
-          setFilteredData(data); // Show all data initially
-        }
       } catch (error) {
         console.error("Error fetching data:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -56,7 +45,6 @@ function Search() {
   const handleSearch = () => {
     let filtered = userData;
 
-    // Filter by category if selected
     if (filterKey && searchTerm) {
       if (filterKey === "Gender") {
         filtered = userData.filter(user =>
@@ -75,12 +63,16 @@ function Search() {
       );
     }
 
-    // Set the filtered data and save to sessionStorage
     setFilteredData(filtered);
     setIsVisible(true);
-    sessionStorage.setItem('searchTerm', searchTerm);
-    sessionStorage.setItem('filterKey', filterKey);
-    sessionStorage.setItem('filteredData', JSON.stringify(filtered)); // Save as JSON string
+    setIsSearchClicked(true);
+  };
+
+  const handleClearSearch = () => {
+    setSearchTerm('');
+    setFilteredData(userData); 
+    setIsVisible(false); 
+    setIsSearchClicked(false); 
   };
 
   return (
@@ -90,17 +82,33 @@ function Search() {
       <div className="container">
         <DropdownButton onFilterChange={handleFilterChange} />
         <div className="d-flex flex-column w-25">
-          <input
-            type="text"
-            placeholder="Search by Keyword"
-            className="mb-2 mt-2 rounded border-secondary-subtle focus-ring-primary"
-            value={searchTerm}
-            onChange={handleSearchChange}
-          />
+          <div className="d-flex">
+            <input
+              type="text"
+              placeholder="Search by Keyword"
+              className="mb-2 mt-2 rounded border-secondary-subtle focus-ring-primary"
+              value={searchTerm}
+              onChange={handleSearchChange}
+            />
+            {searchTerm && (
+              <button
+                type="button"
+                className="btn btn-link p-0 ms-2"
+                onClick={handleClearSearch}
+                aria-label="Clear search"
+              >
+                <span>&times;</span> 
+              </button>
+            )}
+          </div>
           <button type="button" className="btn btn-outline-secondary rounded" onClick={handleSearch}>Search</button>
         </div>
         <p>Displaying {filteredData.length > 0 ? filteredData.length : 0} Records</p>
         {filteredData.length > 0 && <AverageandMedian filteredData={filteredData} />}
+        
+        
+        {!isSearchClicked && filteredData.length === 0 && <AverageandMedian filteredData={[]} />}
+
         <div className="container mt-4">
           <Table data={filteredData} isVisible={isVisible} />
         </div>
