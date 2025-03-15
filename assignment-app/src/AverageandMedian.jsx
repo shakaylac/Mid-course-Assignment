@@ -40,33 +40,32 @@ function AverageandMedian({ filteredData }) {
         }
     }, [filteredData]);
 
-    const isDataEmpty = !Array.isArray(filteredData) || filteredData.length === 0; 
 
     
     return (
         <div className="d-flex flex-row text-center gap-3">
             <div className="border w-25">
                 <p><strong>Average Usage Time (min/day)</strong></p>
-                <p>Average: {isDataEmpty ? "0 minutes" : `${calculateAverage(filteredData, "App Usage Time (min/day)")} minutes`}</p>
-                <p>Median: {isDataEmpty ? "0 minutes" : `${calculateMedian(filteredData, "App Usage Time (min/day)")} minutes`}</p>
+                <p>Average: {`${calculateAverage(filteredData, "App Usage Time (min/day)")} minutes`}</p>
+                <p>Median: {`${calculateMedian(filteredData, "App Usage Time (min/day)")} minutes`}</p>
             </div>
 
             <div className="border w-25">
                 <p><strong>Screen On Time (hours/day)</strong></p>
-                <p>Average: {isDataEmpty ? "0 hours" : `${calculateAverage(filteredData, "Screen On Time (hours/day)")} hours`}</p>
-                <p>Median: {isDataEmpty ? "0 hours" : `${calculateMedian(filteredData, "Screen On Time (hours/day)")} hours`}</p>
+                <p>Average: {`${calculateAverage(filteredData, "Screen On Time (hours/day)")} hours`}</p>
+                <p>Median: {`${calculateMedian(filteredData, "Screen On Time (hours/day)")} hours`}</p>
             </div>
 
             <div className="border w-25">
                 <p><strong>Number of Apps Installed</strong></p>
-                <p>Average: {isDataEmpty ? "0 Apps" : `${calculateAverage(filteredData, "Number of Apps Installed")} Apps`}</p>
-                <p>Median: {isDataEmpty ? "0 Apps" : `${calculateMedian(filteredData, "Number of Apps Installed")} Apps`}</p>
+                <p>Average: { `${calculateAverage(filteredData, "Number of Apps Installed")} Apps`}</p>
+                <p>Median: {`${calculateMedian(filteredData, "Number of Apps Installed")} Apps`}</p>
             </div>
 
             <div className="border w-25">
                 <p><strong>Age</strong></p>
-                <p>Average: {isDataEmpty ? "0 Years Old" : `${calculateAverage(filteredData, "Age")} Years Old`}</p>
-                <p>Median: {isDataEmpty ? "0 Years Old" : `${calculateMedian(filteredData, "Age")} Years Old`}</p>
+                <p>Average: {`${calculateAverage(filteredData, "Age")} Years Old`}</p>
+                <p>Median: {`${calculateMedian(filteredData, "Age")} Years Old`}</p>
             </div>
         </div>
     );

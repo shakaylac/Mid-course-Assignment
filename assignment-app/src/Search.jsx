@@ -87,17 +87,19 @@ function Search() {
               type="text"
               placeholder="Search by Keyword"
               className="mb-2 mt-2 rounded border-secondary-subtle focus-ring-primary"
+              style={{position:"relative"}}
               value={searchTerm}
               onChange={handleSearchChange}
             />
             {searchTerm && (
               <button
                 type="button"
-                className="btn btn-link p-0 ms-2"
+                className="btn btn-link p-0 ms-2 text-decoration-none"
+                style={{color:"black", position:"absolute", left:"217px", top:"125px"}}
                 onClick={handleClearSearch}
                 aria-label="Clear search"
               >
-                <span>&times;</span> 
+                <p>X</p> 
               </button>
             )}
           </div>
