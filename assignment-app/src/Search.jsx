@@ -11,10 +11,30 @@ function Search() {
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredData, setFilteredData] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
-  const [isSearchClicked, setIsSearchClicked] = useState(false);  // New state for tracking search button click
+  const [isSearchClicked, setIsSearchClicked] = useState(false);
+
+  useEffect(() => {
+    const savedSearchTerm = sessionStorage.getItem("searchTerm");
+    const savedFilterKey = sessionStorage.getItem("filterKey");
+    const savedFilteredData = sessionStorage.getItem("filteredData");
+  
+    if (savedSearchTerm) {
+      setSearchTerm(savedSearchTerm);
+    }
+    if (savedFilterKey) {
+      setFilterKey(savedFilterKey);
+    }
+    if (savedFilteredData) {
+      setFilteredData(JSON.parse(savedFilteredData));
+    }
+
+    setIsVisible(true);
+
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       try {
         const response = await fetch("http://localhost:3000/api/data/search");
 
@@ -24,6 +44,11 @@ function Search() {
 
         const data = await response.json();
         setUserData(data);
+
+        const savedFilteredData = sessionStorage.getItem("filteredData");
+        if (!savedFilteredData) {
+          setFilteredData(data);
+        }
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -32,7 +57,8 @@ function Search() {
     };
 
     fetchData();
-  }, []);
+  }, []); 
+
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
@@ -66,13 +92,23 @@ function Search() {
     setFilteredData(filtered);
     setIsVisible(true);
     setIsSearchClicked(true);
+
+    sessionStorage.setItem("searchTerm", searchTerm);
+    sessionStorage.setItem("filterKey", filterKey);
+    sessionStorage.setItem("filteredData", JSON.stringify(filtered)); 
   };
+
+  
 
   const handleClearSearch = () => {
     setSearchTerm('');
     setFilteredData(userData); 
     setIsVisible(false); 
-    setIsSearchClicked(false); 
+    setIsSearchClicked(false);
+
+    sessionStorage.removeItem("searchTerm");
+    sessionStorage.removeItem("filterKey");
+    sessionStorage.removeItem("filteredData");
   };
 
   return (
@@ -87,15 +123,16 @@ function Search() {
               type="text"
               placeholder="Search by Keyword"
               className="mb-2 mt-2 rounded border-secondary-subtle focus-ring-primary"
-              style={{position:"relative"}}
+              style={{position: "relative"}}
               value={searchTerm}
               onChange={handleSearchChange}
+              aria-label="Search field"
             />
             {searchTerm && (
               <button
                 type="button"
                 className="btn btn-link p-0 ms-2 text-decoration-none"
-                style={{color:"black", position:"absolute", left:"217px", top:"125px"}}
+                style={{color:"black", position:"absolute", left:"19%", top:"125px"}}
                 onClick={handleClearSearch}
                 aria-label="Clear search"
               >
@@ -105,14 +142,19 @@ function Search() {
           </div>
           <button type="button" className="btn btn-outline-secondary rounded" onClick={handleSearch}>Search</button>
         </div>
-        <p>Displaying {filteredData.length > 0 ? filteredData.length : 0} Records</p>
+
+        <p>
+          {isLoading
+          ? "Loading..."
+          : `Displaying ${filteredData.length > 0 ? filteredData.length : 0} Records`}
+        </p>
+
         {filteredData.length > 0 && <AverageandMedian filteredData={filteredData} />}
-        
-        
+  
         {!isSearchClicked && filteredData.length === 0 && <AverageandMedian filteredData={[]} />}
 
         <div className="container mt-4">
-          <Table data={filteredData} isVisible={isVisible} />
+          {filteredData && <Table data={filteredData} isVisible={isVisible}/>}
         </div>
       </div>
     </>
