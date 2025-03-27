@@ -26,13 +26,16 @@ function Search() {
     }
     if (savedFilteredData) {
       setFilteredData(JSON.parse(savedFilteredData));
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
     }
 
-    setIsVisible(true);
+  
+    
 
-  }, []);
+  },[]); 
 
-  useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
@@ -56,8 +59,6 @@ function Search() {
       }
     };
 
-    fetchData();
-  }, []); 
 
 
   const handleSearchChange = (e) => {
@@ -69,6 +70,11 @@ function Search() {
   };
 
   const handleSearch = () => {
+
+    if (userData.length === 0) {
+      fetchData();
+    }
+
     let filtered = userData;
 
     if (filterKey && searchTerm) {
@@ -108,7 +114,7 @@ function Search() {
 
     sessionStorage.removeItem("searchTerm");
     sessionStorage.removeItem("filterKey");
-    sessionStorage.removeItem("filteredData");
+    sessionStorage.removeItem("filteredData"); 
   };
 
   return (
@@ -154,7 +160,7 @@ function Search() {
         {!isSearchClicked && filteredData.length === 0 && <AverageandMedian filteredData={[]} />}
 
         <div className="container mt-4">
-          {filteredData && <Table data={filteredData} isVisible={isVisible}/>}
+          <Table data={filteredData} isVisible={isVisible}/>
         </div>
       </div>
     </>
